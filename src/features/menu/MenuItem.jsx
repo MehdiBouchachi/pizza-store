@@ -10,9 +10,16 @@ function MenuItem({ pizza }) {
   const dispatch = useDispatch();
   const currentQuantity = useSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-  
   function handleAddToCart() {
-  
+    /* so we need to do is to create new pizza object 'newItem' that has the exact shape of cart object 
+     {
+    pizzaId: 12,
+    name: 'Mediterranean',
+    quantity: 2,
+    unitPrice: 16,
+    totalPrice: 32,
+  },
+  */
     const newItem = {
       pizzaId: id,
       name,
@@ -53,7 +60,8 @@ function MenuItem({ pizza }) {
             </div>
           )}
 
-         
+          {/* NOTE: but in any case , we only to display this delete button  if the pizza is actullay is in the cart 
+          so how we can do that ? , well  basically we need to detrmine wether the quantity of each of these pizzas is greator than zero in the cart , and if is then we can display the delete button and not add to cart button , But if theres no pizza in the cart then we only show add to cart  */}
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart
